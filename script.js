@@ -14,13 +14,19 @@ function createNewGrid(gridSize) {
 
 function resetGrid() {
     grid.replaceChildren();
-}
+};
 
+const errorMessage = document.querySelector("#wrong-grid-size");
 const resetButton = document.querySelector("#reset");
 resetButton.addEventListener("click", () => {
     const newGridSize = document.querySelector("#grid-size").value;
-    resetGrid();
-    createNewGrid(newGridSize);
-})
+    if (newGridSize < 1 || newGridSize > 100) {
+        return errorMessage.classList.remove("invisible");
+    } else {
+        errorMessage.classList.add("invisible");
+        resetGrid();
+        createNewGrid(newGridSize);
+    };
+});
 
 createNewGrid(16);
