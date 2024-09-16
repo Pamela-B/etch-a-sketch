@@ -11,3 +11,14 @@
 body {
     background-color: gray;
 }
+
+.grid-col {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+}
+
+.grid-item {
+    flex: 1 1 auto;
+    border: 1px solid rgb(200 200 200);
+}
