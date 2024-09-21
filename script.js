@@ -10,6 +10,12 @@ function createNewGrid(gridSize) {
         };
         grid.appendChild(newGridColumn);
     };
+    const gridItem = document.querySelectorAll(".grid-item");
+    for (let i = 0; i < gridItem.length; i++) {
+        gridItem[i].addEventListener("mousemove", () => {
+            gridItem[i].classList.add("black-background");
+        });
+    };
 };
 
 function resetGrid() {

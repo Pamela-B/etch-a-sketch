@@ -26,3 +26,7 @@ body {
 .invisible {
     display: none;
 }
+
+.black-background {
+    background-color: black;
+}
