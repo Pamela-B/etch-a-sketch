@@ -1,3 +1,9 @@
+
+let mouseIsDown = false;
+const body = document.querySelector('body');
+body.addEventListener('mousedown', () => {mouseIsDown = true});
+body.addEventListener('mouseup', () => {mouseIsDown = false});
+
 function createNewGrid(gridSize) {
     const grid = document.querySelector("#grid");
     for (let i = 0; i < gridSize; i++) {
@@ -10,10 +16,14 @@ function createNewGrid(gridSize) {
         };
         grid.appendChild(newGridColumn);
     };
+
+
     const gridItem = document.querySelectorAll(".grid-item");
     for (let i = 0; i < gridItem.length; i++) {
-        gridItem[i].addEventListener("mousemove", () => {
-            gridItem[i].classList.add("black-background");
+        gridItem[i].addEventListener('mousemove', () => {
+            if (mouseIsDown) {
+                gridItem[i].classList.add("black-background");
+            };
         });
     };
 };
