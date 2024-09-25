@@ -1,9 +1,3 @@
-
-let mouseIsDown = false;
-const body = document.querySelector('body');
-body.addEventListener('mousedown', () => {mouseIsDown = true});
-body.addEventListener('mouseup', () => {mouseIsDown = false});
-
 function createNewGrid(gridSize) {
     const grid = document.querySelector("#grid");
     for (let i = 0; i < gridSize; i++) {
@@ -32,9 +26,7 @@ function resetGrid() {
     grid.replaceChildren();
 };
 
-const errorMessage = document.querySelector("#wrong-grid-size");
-const resetButton = document.querySelector("#reset");
-resetButton.addEventListener("click", () => {
+function gridSizeCheckAndRestart() {
     const newGridSize = document.querySelector("#grid-size").value;
     if (newGridSize < 1 || newGridSize > 100) {
         return errorMessage.classList.remove("invisible");
@@ -43,6 +35,15 @@ resetButton.addEventListener("click", () => {
         resetGrid();
         createNewGrid(newGridSize);
     };
-});
+};
+
+let mouseIsDown = false;
+const body = document.querySelector('body');
+body.addEventListener('mousedown', () => {mouseIsDown = true});
+body.addEventListener('mouseup', () => {mouseIsDown = false});
+
+const errorMessage = document.querySelector("#wrong-grid-size");
+const resetButton = document.querySelector("#reset");
+resetButton.addEventListener("click", gridSizeCheckAndRestart);
 
 createNewGrid(16);
