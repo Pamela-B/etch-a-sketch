@@ -1,3 +1,30 @@
+body {
+    background-color: #acc2d1;
+}
+
+#container {
+    display: flex;
+    width: 700px;
+    justify-content: space-evenly;
+}
+
+#grid-container {
+    display: flex;
+    flex-flow: column;
+}
+
+#wrong-grid-size {
+    height: 20px;
+    margin-top: 7px;
+    margin-bottom: 3px;
+    text-align: end;
+}
+
+#size-choice {
+    display: flex;
+    justify-content: space-between;
+}
+
 #grid {
     display: flex;
     flex-wrap: wrap;
@@ -5,11 +32,7 @@
     width: 500px;
     height: 500px;
     border: 3px solid black;
-    background-color: rgb(213, 213, 213);
-}
-
-body {
-    background-color: gray;
+    background-color: #e3f2fc;
 }
 
 .grid-col {
@@ -29,4 +52,10 @@ body {
 
 .black-background {
     background-color: black;
+}
+
+#options-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
 }

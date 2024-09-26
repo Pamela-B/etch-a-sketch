@@ -9,10 +9,28 @@
 </head>
 <body>
     <h1>Etch-a-sketch</h1>
-    <label for="grid-size">What grid size do you want? Between 1 and 100: </label>
-    <input id="grid-size" type="number" min="1" max="100">
-    <button id="reset">Reset grid</button>
-    <span id="wrong-grid-size" class="invisible">Grid size has to be between 1 and 100!</span>
-    <div id="grid"></div>
+
+    <div id="container">
+        <div id="grid-container">
+            <div id="pre-grid-text">
+                <p id="wrong-grid-size"></p>
+                <div id="size-choice">
+                    <label for="grid-size">What grid size do you want? Between 1 and 100 </label>
+                    <div>
+                        <input id="grid-size" type="number" min="1" max="100" value="16">
+                        <button id="reset">Reset grid</button>
+                    </div>
+                </div>
+            </div>
+            <div id="grid"></div>
+        </div>
+        <div id="options-container">
+            <button id="random-color">Random color</button>
+            <button id="black">Black</button>
+            <button id="shader">Shader</button>
+            <button id="eraser">Eraser</button>
+        </div>
+    </div>
+
 </body>
 </html>

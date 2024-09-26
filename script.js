@@ -29,12 +29,20 @@ function resetGrid() {
 function gridSizeCheckAndRestart() {
     const newGridSize = document.querySelector("#grid-size").value;
     if (newGridSize < 1 || newGridSize > 100) {
-        return errorMessage.classList.remove("invisible");
+        return errorMessage.textContent = "Grid size has to be between 1 and 100!";
     } else {
-        errorMessage.classList.add("invisible");
+        errorMessage.textContent = "\n";
         resetGrid();
         createNewGrid(newGridSize);
     };
+};
+
+function getRandomRgb() {
+    const num = Math.round(0xffffff * Math.random());
+    const r = num >> 16;
+    const g = num >> 8 & 255;
+    const b = num & 255;
+    return 'rgb(' + r + ', ' + g + ', ' + b + ')';
 };
 
 let mouseIsDown = false;
