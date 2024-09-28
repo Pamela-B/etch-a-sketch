@@ -46,11 +46,7 @@ body {
     border: 1px solid rgb(200 200 200);
 }
 
-.invisible {
-    display: none;
-}
-
-.black-background {
+.black-paint {
     background-color: black;
 }
 

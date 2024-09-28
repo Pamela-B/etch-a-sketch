@@ -11,18 +11,21 @@ function createNewGrid(gridSize) {
         grid.appendChild(newGridColumn);
     };
 
+    paint();
+};
 
+function paint() {
     const gridItem = document.querySelectorAll(".grid-item");
     for (let i = 0; i < gridItem.length; i++) {
         gridItem[i].addEventListener('mousemove', () => {
             if (mouseIsDown) {
-                gridItem[i].classList.add("black-background");
+                gridItem[i].classList.add("black-paint");
             };
         });
     };
-};
+}
 
-function resetGrid() {
+function deleteGrid() {
     grid.replaceChildren();
 };
 
@@ -32,7 +35,7 @@ function gridSizeCheckAndRestart() {
         return errorMessage.textContent = "Grid size has to be between 1 and 100!";
     } else {
         errorMessage.textContent = "\n";
-        resetGrid();
+        deleteGrid();
         createNewGrid(newGridSize);
     };
 };
