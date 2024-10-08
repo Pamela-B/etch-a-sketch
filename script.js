@@ -11,19 +11,56 @@ function createNewGrid(gridSize) {
         grid.appendChild(newGridColumn);
     };
 
+    gridItems = document.querySelectorAll(".grid-item");
+
     paint();
 };
 
 function paint() {
-    const gridItem = document.querySelectorAll(".grid-item");
-    for (let i = 0; i < gridItem.length; i++) {
-        gridItem[i].addEventListener('mousemove', () => {
+        for (let i = 0; i < gridItems.length; i++) {
+        gridItems[i].addEventListener('mouseover', () => {
             if (mouseIsDown) {
-                gridItem[i].classList.add("black-paint");
+                paintAccordingToBrush(gridItems[i]);
             };
         });
     };
 }
+
+function paintAccordingToBrush(gridSquare) {
+    gridSquare.style.removeProperty("background-color");
+    switch (brushType) {
+        case "black":
+            gridSquare.className = "grid-item";
+            gridSquare.classList.add("black-paint");
+            break;
+    
+    
+        case "random-color":
+            gridSquare.className = "grid-item";
+            gridSquare.style.backgroundColor = getRandomRgb();
+            break;
+    
+    
+        case "shader":
+            gridSquare.className = "grid-item";
+            gridSquare.classList.add("black-paint");
+            if (gridSquare.style.opacity === '') {
+                gridSquare.style.opacity = 0.1;
+            } else {
+                gridSquare.style.opacity = parseFloat(gridSquare.style.opacity) + 0.1;
+            };
+            break;
+    
+    
+        case "eraser":
+            gridSquare.className = "grid-item";
+            break;    
+    
+        default:
+            gridSquare.className = "grid-item";
+            gridSquare.classList.add("black-paint");
+    };
+};
 
 function deleteGrid() {
     grid.replaceChildren();
@@ -47,6 +84,27 @@ function getRandomRgb() {
     const b = num & 255;
     return 'rgb(' + r + ', ' + g + ', ' + b + ')';
 };
+
+const blackColorButton = document.querySelector("#black");
+const randomColorButton = document.querySelector("#random-color");
+const shaderButton = document.querySelector("#shader");
+const eraserButton = document.querySelector("#eraser");
+const cleanGridButton = document.querySelector("#clean-grid");
+
+let gridItems;
+
+let brushType = "black";
+
+blackColorButton.addEventListener("click", () => {return brushType = `${blackColorButton.id}`});
+randomColorButton.addEventListener("click", () => {return brushType = `${randomColorButton.id}`});
+shaderButton.addEventListener("click", () => {return brushType = `${shaderButton.id}`});
+eraserButton.addEventListener("click", () => {return brushType = `${eraserButton.id}`});
+cleanGridButton.addEventListener("click", () => {
+    for (let i = 0; i < gridItems.length; i++) {
+        gridItems[i].removeAttribute("style");
+        gridItems[i].className = "grid-item"
+    };
+});
 
 let mouseIsDown = false;
 const body = document.querySelector('body');
