@@ -1,3 +1,5 @@
+const grid = document.querySelector("#grid");
+
 const blackColorButton = document.querySelector("#black");
 const randomColorButton = document.querySelector("#random-color");
 const shaderButton = document.querySelector("#shader");
@@ -8,10 +10,10 @@ let gridItems;
 
 let brushType = "black";
 
-blackColorButton.addEventListener("click", () => {return brushType = `${blackColorButton.id}`});
-randomColorButton.addEventListener("click", () => {return brushType = `${randomColorButton.id}`});
-shaderButton.addEventListener("click", () => {return brushType = `${shaderButton.id}`});
-eraserButton.addEventListener("click", () => {return brushType = `${eraserButton.id}`});
+blackColorButton.addEventListener("click", () => { brushType = blackColorButton.id });
+randomColorButton.addEventListener("click", () => { brushType = randomColorButton.id });
+shaderButton.addEventListener("click", () => { brushType = shaderButton.id });
+eraserButton.addEventListener("click", () => { brushType = eraserButton.id} );
 cleanGridButton.addEventListener("click", () => {
     for (let i = 0; i < gridItems.length; i++) {
         gridItems[i].removeAttribute("style");

@@ -1,5 +1,4 @@
 function createNewGrid(gridSize) {
-    const grid = document.querySelector("#grid");
     for (let i = 0; i < gridSize; i++) {
         const newGridColumn = document.createElement("div");
         newGridColumn.classList.add("grid-col");
